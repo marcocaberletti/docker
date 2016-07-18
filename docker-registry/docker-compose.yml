@@ -1,0 +1,15 @@
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 443:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/hostcert.pem
+    REGISTRY_HTTP_TLS_KEY: /certs/hostkey.pem
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - /srv/registry/data:/var/lib/registry
+    - /srv/registry/certs:/certs
+    - /srv/registry/auth:/auth
