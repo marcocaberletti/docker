@@ -1,0 +1,5 @@
+java-gateway:
+  restart: always
+  build: .
+  ports:
+    - 10052:10052
