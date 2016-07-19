@@ -1,5 +1,6 @@
 java-gateway:
   restart: always
-  build: .
+  image: marco/zabbix-java-gateway
+  container_name: zabbix-java-gateway
   ports:
     - 10052:10052

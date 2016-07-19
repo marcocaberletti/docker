@@ -1,0 +1,13 @@
+[Unit]
+Description=Zabbix Java Gateway container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run -d -p 10052:10052 --name=zabbix-java-gateway marco/zabbix-java-gateway
+ExecStop=/usr/bin/docker stop -t 2 zabbix-java-gateway
+ExecStopPost=/usr/bin/docker rm zabbix-java-gateway
+
+[Install]
+WantedBy=default.target
