@@ -26,3 +26,23 @@ $ docker-compose -f sonarqube/docker-compose.yml up -d
 
 Verificare che la webapp risponda all'URL.
 Verificare lo scan di un progetto.
+
+
+### Upgrade
+Fermare il container, rimuovere l'immangine nella cache locale e riavviere il container:
+```bash
+$ docker-compose -f sonarqube/docker-compose.yml stop
+$ docker rmi sonarqube
+$ docker-compose -f sonarqube/docker-compose.yml up --build -d
+```
+
+Puntare il browser su http://host:9000/setup ed eseguire la migrazione del DB.
+
+In caso di upgrade della major release, es. da 5.6 a 6.0, prima di riavviare 
+il container si rende necessario svuotare la
+directory dei dati locali.
+```bash
+$ cd /srv/sonarqube
+$ mv data/ data_5.6.1
+$ mkdir data
+```

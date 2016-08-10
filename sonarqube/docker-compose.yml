@@ -10,8 +10,8 @@ services:
       - SONARQUBE_JDBC_URL=jdbc:mysql://172.18.0.1:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
       - SONARQUBE_JDBC_USERNAME=sonar
       - SONARQUBE_JDBC_PASSWORD=sonar
+      - TZ=Europe/Rome
     volumes:
-      - /srv/sonarqube/conf:/opt/sonarqube/conf
       - /srv/sonarqube/data:/opt/sonarqube/data
       - /srv/sonarqube/extensions:/opt/sonarqube/extensions
       - /srv/sonarqube/lib/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
