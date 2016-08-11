@@ -1,18 +1,22 @@
-registry:
-  restart: always
-  image: registry:2
-  ports:
-    - 443:5000
-  environment:
-    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/hostcert.pem
-    REGISTRY_HTTP_TLS_KEY: /certs/hostkey.pem
-    REGISTRY_AUTH: htpasswd
-    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-    SEARCH_BACKEND: sqlalchemy
-    SQLALCHEMY_INDEX_DATABASE: sqlite:////opt/sqlitedb/reg.db
-  volumes:
-    - /srv/registry/data:/var/lib/registry
-    - /srv/registry/certs:/certs
-    - /srv/registry/auth:/auth
-    - /srv/registry/search:/opt/sqlitedb
+version: "2"
+
+services:
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 443:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/hostcert.pem
+      REGISTRY_HTTP_TLS_KEY: /certs/hostkey.pem
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      SEARCH_BACKEND: sqlalchemy
+      SQLALCHEMY_INDEX_DATABASE: sqlite:////opt/sqlitedb/reg.db
+      TZ: Europe/Rome
+    volumes:
+      - /srv/registry/data:/var/lib/registry
+      - /srv/registry/certs:/certs
+      - /srv/registry/auth:/auth
+      - /srv/registry/search:/opt/sqlitedb
