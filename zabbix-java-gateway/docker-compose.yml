@@ -1,6 +1,6 @@
 java-gateway:
   restart: always
-  image: marco/zabbix-java-gateway
+  image: cloud-vm187.cloud.cnaf.infn.it/marco/zabbix-java-gateway
   container_name: zabbix-java-gateway
   ports:
     - 10052:10052

@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  jenkins:
+    restart: always
+    image: docker.io/jenkins
+    container_name: jenkins-master
+    volumes:
+      - "/srv/jenkins:/var/jenkins_home"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    network_mode: "bridge"
+    environment:
+      JAVA_OPTS: "-Dhudson.model.DirectoryBrowserSupport.CSP=\"\""
+      TZ: "Europe/Rome"
+     
