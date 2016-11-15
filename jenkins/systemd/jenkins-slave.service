@@ -1,0 +1,11 @@
+[Unit]
+Description=Jenkins Slave
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /home/jenkins/slave.jar -jnlpUrl <master_url>/computer/<slave>/slave-agent.jnlp -secret <secret>
+User=jenkins
+
+[Install]
+WantedBy=multi-user.target

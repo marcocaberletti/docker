@@ -3,7 +3,8 @@ version: "2"
 services:
   registry:
     restart: always
-    image: registry:2
+    image: registry:2.5.0
+    container_name: docker-registry
     ports:
       - 443:5000
     environment:
@@ -20,3 +21,4 @@ services:
       - /srv/registry/certs:/certs
       - /srv/registry/auth:/auth
       - /srv/registry/search:/opt/sqlitedb
+      - /srv/registry/conf/config.yml:/etc/docker/registry/config.yml
