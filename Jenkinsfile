@@ -12,6 +12,8 @@ stage('create Docker images'){
       "kube-docker-runner" : { build_image('kube-docker-runner') },
       "kube-kubectl-runner": { build_image('kube-kubectl-runner') },
       "kube-maven-runner"  : { build_image('kube-maven-runner') },
+      "elasticsearch"      : { build_image('elasticsearch') },
+      "kibana"             : { build_image('kibana') },
       )
 }
 

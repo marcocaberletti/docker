@@ -1,0 +1,36 @@
+server:
+  port: 5601
+  host: 0.0.0.0
+  name: "elastic"
+  basePath: "${KIBANA_BASEPATH}"
+
+#server.ssl.cert: /path/to/your/server.crt
+#server.ssl.key: /path/to/your/server.key
+
+kibana.index: ".kibana"
+
+#pid.file: /var/run/kibana.pid
+
+elasticsearch:
+  url: "${ELASTICSEARCH_URL}"
+
+#elasticsearch.username: "user"
+#elasticsearch.password: "pass"
+#elasticsearch.ssl.cert: /path/to/your/client.crt
+#elasticsearch.ssl.key: /path/to/your/client.key
+#elasticsearch.ssl.ca: /path/to/your/CA.pem
+#elasticsearch.ssl.verify: true
+#elasticsearch.pingTimeout: 1500
+#elasticsearch.requestTimeout: 30000
+#elasticsearch.requestHeadersWhitelist: [ authorization ]
+#elasticsearch.customHeaders: {}
+#elasticsearch.shardTimeout: 0
+#elasticsearch.startupTimeout: 5000
+
+logging.dest: stdout
+
+#logging.silent: false
+#logging.quiet: false
+#logging.verbose: false
+#ops.interval: 5000
+

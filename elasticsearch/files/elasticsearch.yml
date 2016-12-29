@@ -1,0 +1,28 @@
+cluster:
+  name: ${CLUSTER_NAME}
+
+node:
+  name: ${HOSTNAME}
+  master: ${NODE_MASTER}
+  data: ${NODE_DATA}
+  ingest: ${NODE_INGEST}
+  max_local_storage_nodes: ${MAX_STORAGE_NODES}
+
+path:
+  data: /var/lib/elasticsearch
+  logs: /var/log/elasticsearch
+
+network:
+  host: 0.0.0.0
+
+http:
+  enabled: ${HTTP_ENABLE}
+  port: 9200
+
+discovery:
+  zen:
+    ping:
+      unicast:
+        hosts: ${MASTER_HOST}
+    minimum_master_nodes: ${NUMBER_OF_MASTERS}
+
