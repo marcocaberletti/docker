@@ -4,7 +4,8 @@ ENV VERSION=2.62
 ENV DOCKER_GID=992
 
 COPY files/docker.repo /etc/yum.repos.d/docker.repo
-RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget docker-engine
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget docker-engine && \
+    yum clean all
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
   && chmod 755 /usr/share/jenkins \

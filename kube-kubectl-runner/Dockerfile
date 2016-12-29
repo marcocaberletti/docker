@@ -3,7 +3,8 @@ FROM centos:7
 ENV VERSION=2.62
 ENV KUBE_VERSION=1.4.6
 
-RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget && \
+    yum clean all
 
 RUN wget -O /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBE_VERSION}/bin/linux/amd64/kubectl \
   && chmod +x /usr/local/bin/kubectl
