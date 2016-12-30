@@ -1,5 +1,5 @@
 #!/bin/sh
 
-VERSION=${VERSION:-"5.1.1-1"}
+TAG=${TAG:-"5.1.1-1"}
 
-docker build --no-cache -t italiangrid/kibana:${VERSION} .
+docker build --no-cache -t italiangrid/kibana:${TAG} .
