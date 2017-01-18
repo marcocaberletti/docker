@@ -1,7 +1,7 @@
 FROM centos:7
 
-ENV VERSION=2.62
-ENV KUBE_VERSION=1.4.6
+ARG VERSION=2.62
+ARG KUBE_VERSION=1.4.6
 
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget && \
     yum clean all
@@ -19,9 +19,6 @@ RUN chmod 755 /usr/local/bin/jenkins-slave
 ENV HOME /home/jenkins
 RUN groupadd -g 10000 jenkins
 RUN useradd -c "Jenkins user" -d $HOME -u 10000 -g 10000 -m jenkins -s /bin/bash
-
-#RUN mkdir -p /opt/jenkins \
-#  && chown -R jenkins.jenkins /opt/jenkins
 
 USER jenkins
 

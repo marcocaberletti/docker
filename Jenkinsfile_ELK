@@ -1,0 +1,30 @@
+#!groovy​
+
+stage('get code'){ 
+  node('generic'){
+    git 'https://github.com/marcocaberletti/docker.git'
+    stash name: "source", inlude: "./*"
+  }
+}
+
+stage('create Docker images'){
+  parallel(
+      "elasticsearch 5.1.1-1"     : { build_image('elasticsearch', '5.1.1-1') },
+      "elasticsearch 5.1.2-1"     : { build_image('elasticsearch', '5.1.2-1') },
+      "kibana 5.1.1-1"            : { build_image('kibana', '5.1.1-1') },
+      "kibana 5.1.2-1"            : { build_image('kibana', '5.1.2-1') },
+      )
+}
+
+def build_image(image, tag){
+  node('docker'){
+    unstash "source"
+    
+    dir(image){
+      withEnv(["TAG=${tag}"]){
+        sh "./build-image.sh"
+        sh "./push-image.sh"
+      }
+    }
+  }
+}

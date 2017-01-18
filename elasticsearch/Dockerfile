@@ -1,6 +1,7 @@
 FROM centos:7
 
-ENV ES_VERSION=5.1.1-1
+ARG ES_VERSION=5.1.1-1
+
 ENV CLUSTER_NAME=elasticsearch
 ENV NODE_MASTER=true
 ENV NODE_DATA=false

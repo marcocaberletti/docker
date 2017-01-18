@@ -1,3 +1,5 @@
 #!/bin/sh
 
-docker build --no-cache -t italiangrid/kube-docker-runner .
+TAG=${TAG:-"latest"}
+
+docker build --no-cache -t italiangrid/kube-docker-runner:${TAG} .
