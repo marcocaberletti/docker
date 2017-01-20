@@ -4,7 +4,7 @@ ENV VERSION=2.62
 ENV DOCKER_GID=992
 
 COPY files/docker.repo /etc/yum.repos.d/docker.repo
-RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget docker-engine && \
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget gettext docker-engine && \
     yum clean all
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
