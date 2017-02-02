@@ -3,7 +3,9 @@
 stage('get code'){ 
   node('generic'){
     git 'https://github.com/marcocaberletti/docker.git'
-    stash name: "source", inlude: "./argus-authz/*"
+    dir('argus-authz') {
+      stash name: "source", inlude: "./*"
+    }
   }
 }
 
