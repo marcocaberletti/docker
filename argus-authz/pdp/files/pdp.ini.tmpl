@@ -1,0 +1,18 @@
+[SERVICE]
+entityId = http://pdp.example.org/pdp
+hostname = ${HOSTNAME}
+port = 8152
+adminHost = localhost
+adminPort = 8153
+adminPassword = pdpadmin_password
+
+[POLICY]
+paps = ${PAP_URLS}
+retentionInterval = ${RETENTION_INTERVAL}
+
+[SECURITY]
+serviceCertificate = /etc/grid-security/hostcert.pem 
+servicePrivateKey = /etc/grid-security/hostkey.pem 
+trustInfoDir = /etc/grid-security/certificates
+enableSSL = ${ENABLE_SSL}
+

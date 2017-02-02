@@ -3,16 +3,15 @@
 stage('get code'){ 
   node('generic'){
     git 'https://github.com/marcocaberletti/docker.git'
-    stash name: "source", inlude: "./*"
+    stash name: "source", inlude: "./argus-authz/*"
   }
 }
 
 stage('create Docker images'){
   parallel(
-      "elasticsearch 5.1.1-1"     : { build_image('elasticsearch', '5.1.1-1') },
-      "elasticsearch 5.1.2-1"     : { build_image('elasticsearch', '5.1.2-1') },
-      "kibana 5.1.1-1"            : { build_image('kibana', '5.1.1-1') },
-      "kibana 5.1.2-1"            : { build_image('kibana', '5.1.2-1') },
+      "pap 1.7.0-1" : { build_image('pap', '1.7.0-1') },
+      "pdp 1.7.0-1" : { build_image('pdp', '1.7.0-1') },
+      "pep 1.7.2-1" : { build_image('pep', '1.7.2-1') },
       )
 }
 

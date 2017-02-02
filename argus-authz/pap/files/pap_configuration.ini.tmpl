@@ -1,0 +1,29 @@
+[paps]
+
+## Trusted PAPs will be listed here
+
+[paps:properties]
+
+poll_interval = 300
+ordering = default
+
+[repository]
+
+consistency_check = true
+consistency_check.repair = false
+
+[standalone-service]
+
+entity_id = http://pap.example.id
+
+hostname = ${HOSTNAME}
+port = 8150
+
+shutdown_port = 8151
+shutdown_command = shutdown
+
+
+[security]
+
+certificate = /etc/grid-security/hostcert.pem 
+private_key = /etc/grid-security/hostkey.pem

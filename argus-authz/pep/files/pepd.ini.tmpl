@@ -1,0 +1,55 @@
+[SERVICE]
+entityId = http://pep.example.org/pepd
+hostname = ${HOSTNAME}
+port = 8154
+adminHost = localhost
+adminPort = 8155
+adminPassword = pepdadmin_password
+
+pips = REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP
+obligationHandlers = ACCOUNTMAP_OH
+
+[PDP]
+pdps = ${PDP_URLS}
+
+[SECURITY]
+serviceCertificate = /etc/grid-security/hostcert.pem 
+servicePrivateKey = /etc/grid-security/hostkey.pem 
+trustInfoDir = /etc/grid-security/certificates
+enableSSL = ${ENABLE_SSL}
+requireClientCertAuthentication = true
+
+[REQVALIDATOR_PIP]
+parserClass = org.glite.authz.pep.pip.provider.RequestValidatorPIPIniConfigurationParser
+validateRequestSubjects = true
+validateRequestResources = true
+validateRequestAction = true
+validateRequestEnvironment = false
+
+[OPENSSLSUBJECT_PIP]
+parserClass = org.glite.authz.pep.pip.provider.OpenSSLSubjectPIPIniConfigurationParser
+opensslSubjectAttributeIDs = http://glite.org/xacml/attribute/subject-issuer urn:oasis:names:tc:xacml:1.0:subject:subject-id
+opensslSubjectAttributeDatatypes = http://www.w3.org/2001/XMLSchema#string
+
+[GLITEXACMLPROFILE_PIP]
+parserClass = org.glite.authz.pep.pip.provider.AuthorizationProfilePIPIniConfigurationParser
+vomsInfoDir = /etc/grid-security/vomsdir
+acceptedProfileIDs = http://glite.org/xacml/profile/grid-ce/1.0 http://glite.org/xacml/profile/grid-wn/1.0
+
+[COMMONXACMLPROFILE_PIP]
+parserClass = org.glite.authz.pep.pip.provider.CommonXACMLAuthorizationProfilePIPIniConfigurationParser
+vomsInfoDir = /etc/grid-security/vomsdir
+acceptedProfileIDs = http://dci-sec.org/xacml/profile/common-authz/1.1
+
+[ACCOUNTMAP_OH]
+parserClass = org.glite.authz.pep.obligation.dfpmap.DFPMObligationHandlerConfigurationParser
+accountMapFile = /etc/grid-security/grid-mapfile
+groupMapFile = /etc/grid-security/groupmapfile
+gridMapDir = /etc/grid-security/gridmapdir
+
+useSecondaryGroupNamesForMapping = false
+preferDNForLoginName =  true
+preferDNForPrimaryGroupName = true
+noPrimaryGroupNameIsError = false
+
+
