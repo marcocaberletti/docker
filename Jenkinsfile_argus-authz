@@ -1,4 +1,10 @@
-#!groovy​
+#!groovy
+
+properties([
+  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '5']],
+  pipelineTriggers([cron('@daily')]),
+])
+
 
 stage('get code'){ 
   node('generic'){
