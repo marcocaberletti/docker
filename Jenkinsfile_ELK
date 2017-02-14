@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '5']],
+  buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')),
   pipelineTriggers([cron('@daily')]),
 ])
 
@@ -15,10 +15,10 @@ stage('get code'){
 
 stage('create Docker images'){
   parallel(
-      "elasticsearch 5.1.1-1"     : { build_image('elasticsearch', '5.1.1-1') },
+//      "elasticsearch 5.1.1-1"     : { build_image('elasticsearch', '5.1.1-1') },
       "elasticsearch 5.1.2-1"     : { build_image('elasticsearch', '5.1.2-1') },
       "elasticsearch 5.2.0-1"     : { build_image('elasticsearch', '5.2.0-1') },
-      "kibana 5.1.1-1"            : { build_image('kibana', '5.1.1-1') },
+//      "kibana 5.1.1-1"            : { build_image('kibana', '5.1.1-1') },
       "kibana 5.1.2-1"            : { build_image('kibana', '5.1.2-1') },
       "kibana 5.2.0-1"            : { build_image('kibana', '5.2.0-1') },
       )
