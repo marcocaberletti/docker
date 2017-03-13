@@ -16,8 +16,9 @@ stage('get code'){
 stage('create Docker images'){
   parallel(
       "kube-docker-runner"        : { build_image('kube-docker-runner', 'latest') },
-      "kube-kubectl-runner 1.4.6" : { build_image('kube-kubectl-runner', '1.4.6') },
+//      "kube-kubectl-runner 1.4.6" : { build_image('kube-kubectl-runner', '1.4.6') },
       "kube-kubectl-runner 1.5.2" : { build_image('kube-kubectl-runner', '1.5.2') },
+      "kube-kubectl-runner 1.5.3" : { build_image('kube-kubectl-runner', '1.5.3') },
       "kube-maven-runner"         : { build_image('kube-maven-runner', 'latest') },
       )
 }
