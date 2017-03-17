@@ -1,5 +1,8 @@
 #!/bin/sh
 
-TAG=${TAG:-"1.4.6"}
+set -xe
 
-docker build --build-arg KUBE_VERSION=${TAG} --no-cache -t italiangrid/kube-kubectl-runner:$TAG .
+TAG=${TAG:-"1.4.6"}
+JNLP_VERSION=${JNLP_VERSION:-"2.62"}
+
+docker build --build-arg KUBE_VERSION=${TAG},VERSION=${JNLP_VERSION} --no-cache -t italiangrid/kube-kubectl-runner:$TAG .
