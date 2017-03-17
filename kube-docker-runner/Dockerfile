@@ -1,6 +1,6 @@
 FROM centos:7
 
-ENV VERSION=2.62
+ARG VERSION=2.62
 ENV DOCKER_GID=992
 
 COPY files/docker.repo /etc/yum.repos.d/docker.repo

@@ -1,6 +1,6 @@
 FROM fedora:latest
 
-ENV VERSION=2.62
+ARG VERSION=2.62
 
 RUN dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel maven git wget gettext && \
     dnf clean all

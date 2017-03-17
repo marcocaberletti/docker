@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -xe
+
 TAG=${TAG:-"latest"}
 JNLP_VERSION=${JNLP_VERSION:-"2.62"}
 
