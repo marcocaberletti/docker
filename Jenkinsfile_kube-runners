@@ -20,7 +20,7 @@ stage('create Docker images'){
   parallel(
       "kube-generic-runner"       : { build_image('kube-generic-runner', 'latest') },
       "kube-docker-runner"        : { build_image('kube-docker-runner', 'latest') },
-      "kube-kubectl-runner 1.5.3" : { build_image('kube-kubectl-runner', '1.5.3') },
+      "kube-kubectl-runner 1.5.4" : { build_image('kube-kubectl-runner', '1.5.4') },
       "kube-maven-runner"         : { build_image('kube-maven-runner', 'latest') },
       )
 }
