@@ -2,7 +2,7 @@ FROM fedora:latest
 
 ARG VERSION=2.62
 
-RUN dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel maven git wget gettext && \
+RUN dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel maven git wget gettext rsync && \
     dnf clean all
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
