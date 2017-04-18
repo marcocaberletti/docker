@@ -1,6 +1,6 @@
 FROM centos:7
 
-ARG VERSION=2.62
+ARG JNLP_VERSION=2.62
 ARG KUBE_VERSION=1.4.6
 
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget gettext rsync && \
@@ -9,7 +9,7 @@ RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget gettext 
 RUN wget -O /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBE_VERSION}/bin/linux/amd64/kubectl \
   && chmod +x /usr/local/bin/kubectl
 
-RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
+RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JNLP_VERSION}/remoting-${JNLP_VERSION}.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
 
