@@ -2,7 +2,7 @@ FROM fedora:latest
 
 ARG JNLP_VERSION=2.62
 
-RUN dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget gettext rsync unzip jq createrepo repoview fuse-sshfs && \
+RUN dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel git wget gettext rsync unzip jq createrepo repoview rpmdevtools fuse-sshfs && \
     dnf clean all
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JNLP_VERSION}/remoting-${JNLP_VERSION}.jar \
