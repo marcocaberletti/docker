@@ -22,6 +22,7 @@ stage('create Docker images'){
       "kube-docker-runner"        : { build_image('kube-docker-runner', 'latest') },
       "kube-kubectl-runner 1.5.6" : { build_image('kube-kubectl-runner', '1.5.6') },
       "kube-maven-runner"         : { build_image('kube-maven-runner', 'latest') },
+      "kube-ubuntu-runner"        : { build_image('kube-ubuntu-runner', '16.04') },
       )
 }
 
