@@ -8,22 +8,26 @@ properties([
   ]),
 ])
 
-
-stage('get code'){ 
-  node('generic'){
-    git 'https://github.com/marcocaberletti/docker.git'
-    stash name: "source", inlude: "./*"
+try {
+  stage('get code'){ 
+    node('generic'){
+      git 'https://github.com/marcocaberletti/docker.git'
+      stash name: "source", inlude: "./*"
+    }
   }
-}
-
-stage('create Docker images'){
-  parallel(
-      "kube-generic-runner"       : { build_image('kube-generic-runner', 'latest') },
-      "kube-docker-runner"        : { build_image('kube-docker-runner', 'latest') },
-      "kube-kubectl-runner 1.5.6" : { build_image('kube-kubectl-runner', '1.5.6') },
-      "kube-maven-runner"         : { build_image('kube-maven-runner', 'latest') },
-      "kube-ubuntu-runner"        : { build_image('kube-ubuntu-runner', '16.04') },
-      )
+  
+  stage('create Docker images'){
+    parallel(
+        "kube-generic-runner"       : { build_image('kube-generic-runner', 'latest') },
+        "kube-docker-runner"        : { build_image('kube-docker-runner', 'latest') },
+        "kube-kubectl-runner 1.5.6" : { build_image('kube-kubectl-runner', '1.5.6') },
+        "kube-maven-runner"         : { build_image('kube-maven-runner', 'latest') },
+        "kube-ubuntu-runner"        : { build_image('kube-ubuntu-runner', '16.04') },
+        )
+  }
+}catch(e) {
+  slackSend color: 'danger', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} Failure (<${env.BUILD_URL}|Open>)"
+  throw(e)
 }
 
 def build_image(image, tag){
