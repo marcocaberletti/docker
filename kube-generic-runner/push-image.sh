@@ -2,7 +2,7 @@
 
 set -xe
 
-DOCKER_REGISTRY_HOST=${DOCKER_REGISTRY_HOST:-"cloud-vm181.cloud.cnaf.infn.it"}
+DOCKER_REGISTRY_HOST=${DOCKER_REGISTRY_HOST:-"cloud-vm114.cloud.cnaf.infn.it"}
 TAG=${TAG:-"latest"}
 
 image_name=italiangrid/kube-generic-runner:$TAG

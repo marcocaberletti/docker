@@ -3,7 +3,7 @@ version: "2"
 services:
   registry:
     restart: always
-    image: registry:2.6.0
+    image: registry:2.6.1
     container_name: docker-registry
     ports:
       - 443:5000

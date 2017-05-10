@@ -3,7 +3,7 @@
 Struttura directory:
 
 ```console
-$ mkdir -p /srv/registry/{auth,certs,data}
+$ mkdir -p /srv/registry/{auth,certs,data,conf}
 ```
 Copia dei certificati:
 
@@ -60,6 +60,6 @@ $ docker pull $REGISTRY_HOST/italiangrid/argus-pap-centos6
 ### Troubleshoot
 In caso di errori SSL, copiare il certificato della CA anche nel poll di sistema e fare il rebuild:
 ```console
-$ cp /etc/grid-security/igi-test-ca.pem /etc/pki/ca-trust/source/anchors/
+$ sudo cp /etc/grid-security/igi-test-ca.pem /etc/pki/ca-trust/source/anchors/
 $ update-ca-trust
 ```
