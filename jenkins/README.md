@@ -27,7 +27,6 @@ $ adduser -m jenkins
 
 Copiare la unit systemd di esempio in `/etc/systemd/system/`.
 
-
 Scaricare il jar dal jenkins master e copiarlo ad esempio nella home dell'utente jenkins.
 Copiare l'URL dal jenkins master e modificare la unit di esempio con i valori presi dal master.
 

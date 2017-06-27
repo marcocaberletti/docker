@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -jar /home/jenkins/slave.jar -jnlpUrl <master_url>/computer/<slave>/slave-agent.jnlp -secret <secret>
+EnvironmentFile=/etc/sysconfig/jenkins-slave
+ExecStart=/usr/bin/java -jar /usr/local/lib/slave.jar -jnlpUrl $JNLP_URL -secret $SECRET
 User=jenkins
 
 [Install]
