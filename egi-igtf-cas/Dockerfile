@@ -6,6 +6,7 @@ COPY files/EGI-trustanchors.repo /etc/yum.repos.d/
 
 RUN yum -y install epel-release && yum -y update
 RUN yum -y install ca-policy-egi-core
+RUN yum clean all
 
 RUN cp /etc/grid-security/certificates/*.pem /etc/pki/ca-trust/source/anchors/
 
