@@ -11,5 +11,5 @@ RUN yum clean all
 RUN cp /etc/grid-security/certificates/*.pem /etc/pki/ca-trust/source/anchors/
 
 CMD update-ca-trust && \
-	mkdir -p ${BUNDLE_DEST_DIR} && \
-	cp /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem ${BUNDLE_DEST_DIR}
+	mkdir -vp ${BUNDLE_DEST_DIR} && \
+	cp -v /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem ${BUNDLE_DEST_DIR}
