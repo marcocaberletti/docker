@@ -1,8 +1,14 @@
 #!/bin/bash
 
-export PATH=$PATH:/opt/depot_tools
+export PATH=$PATH:/opt/depot_tools:/opt/apache-maven-3.5.0/bin
 export JAVA_HOME=/opt/jdk/jdk1.8.0_131
 
+python --version
+java -version
+mvn --version
+
+cd $WORKDIR
+pwd
 git clone https://github.com/eclipsesource/J2V8 --branch v8-7.4.288-build .
 
 mkdir -p v8build
