@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xe
+
 export PATH=$PATH:/opt/depot_tools:/opt/apache-maven-3.5.0/bin
 export JAVA_HOME=/opt/jdk/jdk1.8.0_131
 
