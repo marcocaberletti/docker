@@ -39,3 +39,6 @@ cp out.gn/x64.release/obj/libv8_monolith.a $WORKDIR/v8.out/linux.x64
 cd $WORKDIR 
 cp -R v8build/v8/include v8.out/ 
 python build.py -t linux -a x64 --docker j2v8cmake j2v8jni j2v8cpp j2v8optimize j2v8java j2v8test
+
+mkdir -p /srv/artifacts
+cp -v target/j2v8_linux_x86_64-*.jar /srv/artifacts
