@@ -11,5 +11,8 @@ push:
 	docker tag ${NAME}:$(TAG) mcaberletti/${NAME}:$(TAG)
 	docker push mcaberletti/${NAME}:$(TAG)
 
+	docker tag ${NAME}:$(TAG) mcaberletti/${NAME}:latest
+	docker push mcaberletti/${NAME}:latest
+
 clean:
 	rm -v healthcheck
