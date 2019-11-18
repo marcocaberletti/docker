@@ -2,7 +2,7 @@ FROM maven:3-jdk-8
 
 LABEL maintainer "Bot Platform Eng. <bot-platform@conversocial.com>"
 
-ENV MAVEN_UID="1000"
+ENV MAVEN_UID="1002"
 ENV MAVEN_CONFIG='/home/maven/.m2'
 
 ENV UID=""

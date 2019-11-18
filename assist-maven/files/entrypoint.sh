@@ -2,8 +2,7 @@
 
 set -e
 
-[ $UID -ne $MAVEN_UID ] && usermod --uid $UID maven
-[ $GID -ne $MAVEN_UID ] && usermod --gid $GID maven
+[ $UID -ne $MAVEN_UID ] && usermod --uid $UID --gid $GID maven
 
 set -x
 
